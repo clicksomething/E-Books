@@ -10,6 +10,7 @@ namespace E_Books.Data.Migrations
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
+            
             migrationBuilder.CreateTable(
                 name: "Book",
                 columns: table => new
@@ -24,6 +25,7 @@ namespace E_Books.Data.Migrations
                     Price = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
                     IsAvailable = table.Column<bool>(type: "bit", nullable: false)
                 },
+            
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Book", x => x.Id);

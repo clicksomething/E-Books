@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using E_Books.Data;
 using E_Books.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace E_Books.Controllers
 {
@@ -29,6 +30,11 @@ namespace E_Books.Controllers
         {
             return View();
         }
+        // Post: Books/ShowSearchReults
+        public async Task<IActionResult> ShowSearchResults(String SearchPhrase)
+        {
+            return View("Index",await _context.Book.Where(j=>j.Name.Contains(SearchPhrase) || j.Description.Contains(SearchPhrase)).ToListAsync());
+        }
         // GET: Books/Details/5
         public async Task<IActionResult> Details(int? id)
         {
@@ -48,6 +54,7 @@ namespace E_Books.Controllers
         }
 
         // GET: Books/Create
+        [Authorize]
         public IActionResult Create()
         {
             return View();
@@ -56,6 +63,7 @@ namespace E_Books.Controllers
         // POST: Books/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [Authorize]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Author,Publisher,Category,Description,Id,Name,Price,IsAvailable")] Book book)
@@ -70,6 +78,7 @@ namespace E_Books.Controllers
         }
 
         // GET: Books/Edit/5
+        [Authorize]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -88,6 +97,7 @@ namespace E_Books.Controllers
         // POST: Books/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [Authorize]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("Author,Publisher,Category,Description,Id,Name,Price,IsAvailable")] Book book)
@@ -121,6 +131,7 @@ namespace E_Books.Controllers
         }
 
         // GET: Books/Delete/5
+        [Authorize]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -139,6 +150,7 @@ namespace E_Books.Controllers
         }
 
         // POST: Books/Delete/5
+        [Authorize]
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
