@@ -54,7 +54,7 @@ namespace E_Books.Controllers
         }
 
         // GET: Books/Create
-        [Authorize]
+        
         public IActionResult Create()
         {
             return View();
@@ -63,10 +63,10 @@ namespace E_Books.Controllers
         // POST: Books/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [Authorize]
+        
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Author,Publisher,Category,Description,Id,Name,Price,IsAvailable")] Book book)
+        public async Task<IActionResult> Create([Bind("Author,Publisher,Category,Description,Id,Name,Price,Cover,IsAvailable")] Book book)
         {
             if (ModelState.IsValid)
             {
@@ -78,7 +78,7 @@ namespace E_Books.Controllers
         }
 
         // GET: Books/Edit/5
-        [Authorize]
+        
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -97,10 +97,10 @@ namespace E_Books.Controllers
         // POST: Books/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [Authorize]
+        
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Author,Publisher,Category,Description,Id,Name,Price,IsAvailable")] Book book)
+        public async Task<IActionResult> Edit(int id, [Bind("Author,Publisher,Category,Description,Id,Name,Price,Cover,IsAvailable")] Book book)
         {
             if (id != book.Id)
             {
@@ -131,7 +131,7 @@ namespace E_Books.Controllers
         }
 
         // GET: Books/Delete/5
-        [Authorize]
+       
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -150,7 +150,7 @@ namespace E_Books.Controllers
         }
 
         // POST: Books/Delete/5
-        [Authorize]
+       
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
