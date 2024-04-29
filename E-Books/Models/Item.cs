@@ -1,4 +1,6 @@
-﻿namespace E_Books.Models
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace E_Books.Models
 {
     public class Item
 
@@ -10,6 +12,7 @@
 
         public decimal Price { get; set; }
 
+       [Display(Name = "Availability")]
         public bool IsAvailable { get; set; }
 
     }

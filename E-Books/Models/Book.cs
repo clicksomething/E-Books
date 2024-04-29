@@ -1,10 +1,12 @@
-﻿namespace E_Books.Models
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace E_Books.Models
 {
 
     public class Book : Item
 
     {
-
+        
         public string Author { get; set; }
 
         public string Publisher { get; set; }
