@@ -1,3 +1,4 @@
+
 ﻿using System.Drawing;
 
 
@@ -7,7 +8,7 @@ namespace E_Books.Models
     public class Book : Item
 
     {
-
+        
         public string Author { get; set; }
 
         public string Publisher { get; set; }
