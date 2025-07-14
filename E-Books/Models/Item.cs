@@ -14,6 +14,8 @@ namespace E_Books.Models
 
        [Display(Name = "Availability")]
         public bool IsAvailable { get; set; }
+        
+         
 
     }
 }
